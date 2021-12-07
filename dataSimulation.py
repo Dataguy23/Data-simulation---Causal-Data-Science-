@@ -77,14 +77,9 @@ OriginalMax = np.max(JobSatisfaction)
 for i in range(n):
     JobSatisfaction[i] = round((((JobSatisfaction[i]-OriginalMin) * (MaxVal-MinVal)) / (OriginalMax-OriginalMin))+MinVal)
 
-    # round to two decimals
-
-
-
-
 
 # Converting data to a pd DataFrame
 df = pd.DataFrame(list(zip(Retention,FirstJob,Age,IndustryExperience,FlexibleWork,ExtrinsicReward,EducationLevel,OrganizationalCommitment,AdvancementOpportunities,JobSatisfaction)),
 columns=["Retention","FirstJob","Age","IndustryExperience","FlexibleWork","ExtrinsicReward","EducationLevel","OrganizationalCommitment","AdvancementOpportunities","JobSatisfaction"])
 
-df.to_csv("/Users/andersolsen/Desktop/Kandidat/3. semester/Causal Data Science/SimulatedExamData.csv",index=0)
+df.to_csv("../SimulatedExamData.csv",index=0)
