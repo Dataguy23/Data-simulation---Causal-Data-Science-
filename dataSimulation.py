@@ -30,12 +30,12 @@ for i in range(n):
     (FirstJob.append(0) if IndustryExperience[i]==1 else FirstJob.append(random.randint(0,1))) # setting firstjob to FALSE if industry experience is TRUE, else TEMP random 
     FirstJob[i] = 0 if Age[i] >33 else FirstJob[i] # setting FirstJob to FALSE if age is above 33, else keep random integer in set {0,1}
     
-    ExtrinsicReward.append(round((base_salary+bonus_salary)*(Age[i]/100)*(1+(IndustryExperience[i]*0.1)),ndigits=2)) # setting extrinsic as an arb func of age and industry expertise
-
-    (OrganizationalCommitment.append(random.randint(2,8)) if ExtrinsicReward[i]>55000 else OrganizationalCommitment.append(random.randint(1,4))) # setting the org commitment as a func of extrinsicReward
-
-    (FlexibleWork.append(random.randint(45,70)) if FirstJob[i]==1 else FlexibleWork.append(random.randint(60,90)*(100-Age[i])/100)) # setting flexible work as a func of first job and age, in which newly and younger enployees are more likely to work long hours
+    (FlexibleWork.append(random.randint(45,70)) if FirstJob[i]==1 else FlexibleWork.append(random.randint(60,90)*(100-Age[i])/100)) # setting flexible work as a func of first job and age, in which newly and younger enployees are more likely to work long hours    
     
+    ExtrinsicReward.append(round((base_salary+bonus_salary)*(FlexibleWork[i]*0.04)*(Age[i]/100)*(1+(IndustryExperience[i]*0.1)),ndigits=2)) # setting extrinsic as an arb func of age and industry expertise
+
+    (OrganizationalCommitment.append(random.randint(2,8)) if ExtrinsicReward[i]>65000 else OrganizationalCommitment.append(random.randint(1,4))) # setting the org commitment as a func of extrinsicReward
+ 
     (EducationLevel.append(random.randint(2,4)) if FirstJob[i]==1 else EducationLevel.append(random.randint(1,4))) # setting education to a func first job, specificially education is at least bachelor if this is the first job, else random 
 
     AdvancementOpportunities.append(round(np.sum((IndustryExperience[i]*5+EducationLevel[i])))) # setting advancements to equal the sum of industry expertise and education level
